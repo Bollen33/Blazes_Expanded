@@ -1,0 +1,6 @@
+{
+  "parent": "blazesexpanded:block/blaze_ingot_block",
+  "textures": {
+    "all": "blazesexpanded:block/blaze_ingot_block"
+  }
+}

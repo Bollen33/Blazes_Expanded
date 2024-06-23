@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "blazesexpanded:block/blaze_ingot_block"
+  }
+}

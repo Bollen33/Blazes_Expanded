@@ -1,9 +1,11 @@
 package net.bollen33.blazesexpanded;
 
 import com.mojang.logging.LogUtils;
+import net.bollen33.blazesexpanded.block.ModBlocks;
+import net.bollen33.blazesexpanded.item.ModCreativeModeTabs;
+import net.bollen33.blazesexpanded.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,10 +27,15 @@ public class BlazesExpanded
     public BlazesExpanded() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModCreativeModeTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
-        modEventBus.addListener(this::addCreative);
+        //modEventBus.addListener(this::addCreative);
 
     }
 
@@ -37,9 +44,13 @@ public class BlazesExpanded
     }
 
     // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
-    }
+    /*private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.BLAZE_INGOT);
+            event.accept(ModBlocks.BLAZE_INGOT_BLOCK);
+            event.accept(ModItems.BLAZE_EYE);
+        }
+    }*/
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
